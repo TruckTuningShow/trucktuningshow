@@ -8,8 +8,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Playfair+Display:wght@700;900&display=swap');
-    html, body { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-    nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: rgba(0, 0, 0, 0.75); border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; backdrop-filter: blur(8px); }
+    html, body { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'Inter', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+    body { min-width: 320px; }
+    nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: rgba(0, 0, 0, 0.75); border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; backdrop-filter: blur(8px); overflow-x: hidden; }
     .nav-brand { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; letter-spacing: 2px; }
     .nav-links { display: flex; flex-wrap: wrap; gap: 8px; }
     .nav-links a { color: #fff; border: 1px solid #fff; padding: 7px 10px; text-transform: uppercase; font-size: 11px; text-decoration: none; transition: 0.2s; font-weight: 700; }
@@ -17,8 +18,8 @@
     .nav-links a:active { background: #e00; color: #fff; border-color:#e00; box-shadow: 0 0 18px rgba(255,0,0,0.85); }
     section { padding: 120px 20px 80px; min-height: 80vh; }
     @media (max-width: 768px) { 
-      nav { padding: 8px 12px; } 
-      .nav-links { justify-content:center; } 
+      nav { padding: 8px 12px; }
+      .nav-links { justify-content:center; white-space: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
       .nav-links a { font-size: 10px; padding: 6px 8px; }
       section { padding: 100px 15px 60px; }
       .card-grid { grid-template-columns: 1fr; gap: 15px; }
