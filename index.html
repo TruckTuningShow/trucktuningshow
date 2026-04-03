@@ -7,71 +7,91 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;900&family=Playfair+Display:wght@700;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&display=swap');
     html, body { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'Inter', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
     body { min-width: 320px; }
-    nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: rgba(0, 0, 0, 0.75); border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; backdrop-filter: blur(8px); overflow-x: hidden; }
-    .nav-brand { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; letter-spacing: 2px; }
-    .nav-links { display: flex; flex-wrap: wrap; gap: 8px; }
-    .nav-links a { color: #fff; border: 1px solid #fff; padding: 7px 10px; text-transform: uppercase; font-size: 11px; text-decoration: none; transition: 0.2s; font-weight: 700; }
-    .nav-links a:hover, .nav-links a.active { background: #c00; color: #fff; border-color:#c00; box-shadow: 0 0 14px rgba(255,0,0,0.75); }
-    .nav-links a:active { background: #e00; color: #fff; border-color:#e00; box-shadow: 0 0 18px rgba(255,0,0,0.85); }
-    section { padding: 100px 20px 60px; min-height: 70vh; }
+    
+    /* NAVIGARE RAFINATĂ: Fără fundal roșu plin la hover */
+    nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; background: rgba(0, 0, 0, 0.85); border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; padding: 10px 30px; backdrop-filter: blur(10px); }
+    .nav-brand { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; letter-spacing: 2px; }
+    .nav-links { display: flex; gap: 5px; }
+    .nav-links a { color: rgba(255,255,255,0.8); padding: 8px 12px; text-transform: uppercase; font-size: 11px; text-decoration: none; transition: 0.3s; font-weight: 700; position: relative; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+    /* Efect de linie subțire roșie la hover */
+    .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%; background: #c00; transition: all 0.3s; transform: translateX(-50%); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 80%; }
+
+    section { padding: 80px 20px 60px; min-height: auto; } 
+
     @media (max-width: 768px) { 
-      nav { padding: 8px 12px; }
+      nav { padding: 10px 15px; }
       .nav-links { justify-content:center; flex-wrap: wrap; }
       .nav-links a { font-size: 10px; padding: 6px 8px; }
-      section { padding: 60px 15px 30px; }
-      .card-grid { grid-template-columns: 1fr; gap: 8px; }
-      .sponsor-grid { grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 8px; }
-      .sponsor-card { min-height: 280px; }
-      .hero-title { font-size: clamp(2rem, 10vw, 5rem); }
-      .hero-sub { font-size: clamp(1rem, 3vw, 1.5rem); }
-      .timer { padding: 10px 15px; font-size: 0.9rem; }
-      #social { padding-bottom: 0; }
+      section { padding: 60px 15px 40px; }
+      .card-grid { grid-template-columns: 1fr; gap: 15px; }
+      .sponsor-grid { grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 15px; }
+      .hero-title { font-size: clamp(4rem, 15vw, 7rem); }
+      .timer { padding: 10px 18px; font-size: 0.9rem; }
     }
+
     .container { max-width: 1100px; margin: 0 auto; }
     #hero .container { text-align: center; }
-    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 7rem); line-height: 1; margin: 0; letter-spacing: 0.08em; }
-    .hero-sub { font-size: clamp(1rem, 2.5vw, 2rem); text-transform: uppercase; letter-spacing: 2px; margin: 10px 0 15px; color: #f8f8f8; }
-    .hero-p { font-size: 1rem; opacity: 0.85; margin-bottom: 18px; }
-    .timer { display: inline-block; background: linear-gradient(145deg, rgba(20,20,30,0.85), rgba(40,8,8,0.6)); border: 1px solid rgba(255,0,0,0.7); border-radius: 999px; padding: 12px 20px; font-weight: 800; color: #fff; margin-bottom: 26px; box-shadow: 0 10px 30px rgba(255,0,0,0.3); transition: transform 0.25s ease, box-shadow 0.25s ease; }
-    .timer:hover { transform: scale(1.04); box-shadow: 0 15px 35px rgba(255,0,0,0.45); }
-    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 18px; }
-    .card { border: 1px solid rgba(255,255,255,0.2); background: linear-gradient(145deg, rgba(25,30,40,0.9), rgba(15,20,30,0.75)); padding: 24px; border-radius: 16px; box-shadow: 0 20px 35px rgba(0,0,0,0.35); transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
-    .card:hover { transform: translateY(-6px); box-shadow: 0 28px 50px rgba(255,0,0,0.35); border-color: rgba(255,0,0,0.7); }
-    .card h3 { margin-top: 0; font-weight: 900; color: #ffdddd; letter-spacing: .4px; }
-    .card p { opacity: .8; line-height: 1.5; }
-    .card ul { margin-top: 10px; padding-left: 20px; }
-    .card ul li { margin-bottom: 4px; }
-    .sponsor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 20px; }
-    .sponsor-card { border: 1px solid rgba(255,255,255,0.25); background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(0,0,0,0.2)); border-radius: 16px; padding: 20px; text-align: center; cursor: pointer; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; min-height:320px; }
-    .sponsor-card:hover { transform: translateY(-6px); box-shadow: 0 22px 50px rgba(255,0,0,0.3); border-color: rgba(255,0,0,0.8); }
-    .sponsor-card img { width: 150px; height: 150px; object-fit: contain; filter: grayscale(100%); opacity: 0.8; transition: all 0.2s; border-radius: 50%; background: rgba(255,255,255,0.12); padding: 20px; display: block; margin: 0 auto; }
-    .sponsor-card:hover img { transform: scale(1.08); filter: grayscale(0); opacity: 1; }
-    .sponsor-card:hover img { filter: grayscale(0); opacity: 1; }
 
-    .footer { padding: 0 20px 5px; text-align: center; background: #040404; border-top: 1px solid rgba(255,255,255,0.1); }
-    #social { padding-bottom: 0; }
-    .social-links { display: flex; justify-content: center; gap: 12px; margin-top: 10px; }
-    .social-links a { color: #fff; font-size: 1.6rem; }
-    #intro-overlay { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 14px; }
-    #intro-logo { width: 180px; max-width: 55%; }
-    #intro-spinner { width: 50px; height: 50px; border: 5px solid rgba(255,255,255,0.2); border-top-color: #fff; border-radius: 50%; animation: spin 1s linear infinite; }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(5rem, 18vw, 11rem); line-height: 0.85; margin: 0; letter-spacing: 0.08em; }
+    .hero-sub { font-size: clamp(1.2rem, 2.5vw, 2.3rem); text-transform: uppercase; letter-spacing: 3px; margin: 15px 0 20px; color: rgba(255,255,255,0.9); }
+    .hero-p { font-size: 1.1rem; opacity: 0.7; margin-bottom: 25px; font-weight: 400; }
+    
+    /* TIMER RAFINAT: Fundal gri închis, nu roșiatic */
+    .timer { display: inline-block; background: #111; border: 1px solid rgba(204, 0, 0, 0.5); border-radius: 999px; padding: 14px 24px; font-weight: 700; color: #fff; margin-bottom: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; font-variant-numeric: tabular-nums; }
+    .timer:hover { transform: scale(1.03); box-shadow: 0 8px 25px rgba(204,0,0,0.2); border-color: rgba(204, 0, 0, 1); }
+
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; }
+    /* CARDURI MINIMALISTE: Fundal negru mate, glow roșu fin doar la hover */
+    .card { border: 1px solid rgba(255,255,255,0.08); background: #080808; padding: 30px; border-radius: 16px; transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; position: relative; overflow: hidden; }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(204,0,0,0.15); border-color: rgba(204,0,0,0.4); }
+    .card h3 { margin-top: 0; font-weight: 700; color: #fff; letter-spacing: 0.5px; font-size: 1.3rem; margin-bottom: 10px; }
+    .card p { opacity: 0.7; line-height: 1.6; font-size: 0.95rem; }
+    .card ul { margin-top: 15px; padding-left: 0; list-style: none; text-align: left; }
+    .card ul li { margin-bottom: 8px; font-size: 0.9rem; opacity: 0.8; display: flex; align-items: start; color: #eee; }
+    /* Iconiță roșie subțire pentru listă */
+    .card ul li::before { content: '→'; color: #c00; margin-right: 10px; font-weight: bold; flex-shrink: 0; }
+
+    /* LOCAȚIE ȘI ÎNSCRIERE: Fundal închis, mai puțin roșu agresiv */
+    #locatie, #inscriere { background: #050505; border-top: 1px solid rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.03); }
+
+    .sponsor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 25px; }
+    .sponsor-card { border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); border-radius: 16px; padding: 25px; text-align: center; cursor: pointer; transition: all 0.3s ease; min-height:300px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .sponsor-card img { width: 130px; height: 130px; object-fit: contain; filter: grayscale(100%); opacity: 0.6; transition: all 0.3s; border-radius: 50%; background: rgba(255,255,255,0.05); padding: 15px; display: block; margin: 0 auto 15px; }
+    .sponsor-card:hover img { transform: scale(1.05); filter: grayscale(0); opacity: 1; background: rgba(255,255,255,0.08); }
+
+    /* Efecte hover colorate pe grade la sponsori */
+    .sp-institutional:hover { border-color: #ffd700; box-shadow: 0 10px 30px rgba(255,215,0,0.15); }
+    .sp-silver:hover { border-color: #c0c0c0; box-shadow: 0 10px 30px rgba(192,192,192,0.15); }
+    .sp-bronze:hover { border-color: #cd7f32; box-shadow: 0 10px 30px rgba(205,127,50,0.15); }
+    
+    .sponsor-card h4 { font-size: 1rem; font-weight: 700; margin: 0 0 5px; color: #fff; }
+    .sponsor-card p { opacity: 0.6; font-size: 0.85rem; margin: 0; line-height: 1.4; color: #eee; }
+
+    .footer { padding: 15px 20px; text-align: center; background: #000; border-top: 1px solid rgba(255,255,255,0.03); }
+    .social-links { display: flex; justify-content: center; gap: 15px; margin-top: 10px; }
+    .social-links a { color: rgba(255,255,255,0.6); font-size: 1.5rem; transition: 0.3s; }
+    .social-links a:hover { color: #fff; transform: translateY(-3px); }
+
+    #intro-overlay { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 20px; }
+    #intro-spinner { width: 40px; height: 40px; border: 3px solid rgba(255,255,255,0.1); border-top-color: #c00; border-radius: 50%; animation: spin 0.8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
   <div id="intro-overlay">
-    <img id="intro-logo" src="tts-logo.png" alt="TTS Logo" />
     <div id="intro-spinner"></div>
-    <div style="color:#ddd; letter-spacing:1px;">Se încarcă site-ul...</div>
+    <div style="color:rgba(255,255,255,0.6); letter-spacing:2px; font-size: 10px; text-transform: uppercase;">Se încarcă TTS 2026</div>
   </div>
 
   <nav>
     <div class="nav-brand">TTS 2026</div>
     <div class="nav-links">
-      <a href="#hero">Detalii</a>
+      <a href="#hero" class="active">Detalii</a>
       <a href="#program">Program</a>
       <a href="#locatie">Locație</a>
       <a href="#inscriere">Participă</a>
@@ -80,41 +100,42 @@
     </div>
   </nav>
 
-  <section id="hero">
+  <section id="hero" style="padding-top: 140px;">
     <div class="container">
-      <p style="text-transform: uppercase; letter-spacing: 4px; opacity:0.7;">10, 11, 12 iulie • Arad • Expo</p>
+      <p style="text-transform: uppercase; letter-spacing: 5px; opacity:0.5; font-size: 12px; margin-bottom: 10px;">10, 11, 12 iulie • Arad • Expo</p>
       <h1 class="hero-title">TTS</h1>
       <h2 class="hero-sub">Truck Tuning Show</h2>
-      <p class="hero-p">Prima ediție.</p>
+      <p class="hero-p">Prima ediție a celui mai așteptat eveniment de tuning pentru camioane din vestul țării.</p>
       <div class="timer" id="countdown">Calculăm timpul...</div>
     </div>
   </section>
 
   <section id="program">
     <div class="container">
-      <h2 style="font-family:'Playfair Display', serif; font-size:2rem; margin-bottom:16px; text-align:center;"><i class="fas fa-calendar-alt" style="color:#c00; margin-right:10px;"></i>Program Festival</h2>
+      <h2 style="font-family:'Playfair Display', serif; font-size:2.2rem; margin-bottom:25px; text-align:center;"><i class="fas fa-calendar-alt" style="color:#c00; margin-right:12px;"></i>Program Festival</h2>
+      <p style="max-width:600px; margin: 0 auto 40px; text-align: center; opacity: 0.6; font-size: 1rem; color: #eee;">Trei zile intense pline de pasiune, putere și inovație în lumea camioanelor modificate.</p>
       <div class="card-grid">
-        <article class="card" style="background: linear-gradient(145deg, rgba(50,8,8,0.75), rgba(40,10,10,0.95)); border-color: rgba(255, 80, 80, 0.65);">
+        <article class="card">
           <h3>10 Iulie - Vineri</h3>
-          <p>Începerea Festivalului.</p>
-          <ul style="text-align:left; margin-top:8px; font-size:0.9rem; opacity:0.85;">
+          <p>Ziua de deschidere și primire.</p>
+          <ul>
             <li>15:00 – Intrarea în Parcarea Expo, Pregătirea Camioanelor și Parcarea lor.</li>
           </ul>
         </article>
-        <article class="card" style="background: linear-gradient(145deg, rgba(45,5,5,0.75), rgba(30,8,8,0.95)); border-color: rgba(255, 95, 95, 0.65);">
+        <article class="card">
           <h3>11 Iulie - Sâmbătă</h3>
-          <p>Festival pe Tot Parcursul Zilei.</p>
-          <ul style="text-align:left; margin-top:8px; font-size:0.9rem; opacity:0.85;">
-            <li>15:00- Muzică</li>
-            <li>22:00 – Show de Lumini în Întuneric.</li>
+          <p>Evenimentul principal pe tot parcursul zilei.</p>
+          <ul>
+            <li>15:00 – Muzică, atmosferă și interacțiune cu publicul.</li>
+            <li>22:00 – Show de Lumini în Întuneric - un spectacol vizual unic.</li>
           </ul>
         </article>
-        <article class="card" style="background: linear-gradient(145deg, rgba(45,8,8,0.75), rgba(25,8,8,0.95)); border-color: rgba(255, 90, 90, 0.65);">
+        <article class="card">
           <h3>12 Iulie - Duminică</h3>
-          <p>Ultima Zi.</p>
-          <ul style="text-align:left; margin-top:8px; font-size:0.9rem; opacity:0.85;">
-            <li>12:30 – Jurizarea Camioanelor.</li>
-            <li>13:30 – Premierea Camioanelor.</li>
+          <p>Ziua finală și ceremoniile de premiere.</p>
+          <ul>
+            <li>12:30 – Jurizarea Camioanelor de către experți.</li>
+            <li>13:30 – Premierea Camioanelor la diverse categorii.</li>
             <li>16:00 – Terminarea Festivalului și Plecarea Camioanelor.</li>
           </ul>
         </article>
@@ -124,76 +145,81 @@
 
   <section id="locatie">
     <div class="container">
-      <h2 style="font-family:'Playfair Display', serif; font-size:2rem; margin-bottom:10px; text-align:center;"><i class="fas fa-map-marker-alt" style="color:#c00; margin-right:10px;"></i>Locație Festival</h2>
-      <p style="opacity:.9; max-width:760px; margin:0 auto 18px; font-size:1.1rem;">Festivalul are loc în locația indicată mai jos, ușor accesibilă prin GPS.</p>
-      <p style="opacity:.8; max-width:760px; margin:0 auto 18px; font-weight:600; color:#ffdddd;">Coordonate GPS: <span style="color:#fff; font-family:monospace;">46.202981146848785, 21.253195722018283</span></p>
-      <div style="text-align:center; margin-top:20px;">
-        <a href="https://www.google.com/maps?q=46.202981146848785,21.253195722018283" target="_blank" style="background:#c00; color:#fff; padding:12px 20px; border-radius:8px; text-decoration:none; font-weight:600; display:inline-block;">Deschide Locația în Google Maps <i class="fas fa-external-link-alt"></i></a>
+      <h2 style="font-family:'Playfair Display', serif; font-size:2.2rem; margin-bottom:20px; text-align:center;"><i class="fas fa-map-marker-alt" style="color:#c00; margin-right:12px;"></i>Locație Festival</h2>
+      <p style="opacity:0.7; max-width:700px; margin:0 auto 20px; font-size:1rem; text-align:center; line-height: 1.6; color: #eee;">Evenimentul se desfășoară în incinta Expo Arad, un spațiu generos și modern, perfect adaptat pentru giganții șoselelor. Locația este strategic aleasă, fiind ușor accesibilă direct de pe centura orașului Arad.</p>
+      <p style="opacity:0.9; max-width:700px; margin:0 auto 25px; font-weight:600; text-align:center;">Expo Arad • Calea Aurel Vlaicu 300, Arad</p>
+      <div style="text-align:center;">
+        <a href="https://goo.gl/maps/xyz" target="_blank" style="background:#c00; color:#fff; padding:14px 28px; border-radius:8px; text-decoration:none; font-weight:700; display:inline-block; font-size: 0.9rem; transition: background 0.3s; box-shadow: 0 4px 15px rgba(204,0,0,0.2);">Navighează cu Google Maps <i class="fas fa-external-link-alt" style="margin-left: 8px; font-size: 0.8rem;"></i></a>
       </div>
     </div>
   </section>
 
   <section id="inscriere">
-    <div class="container" style="max-width:840px; text-align:center;">
-      <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,0,0,0.5); border-radius: 18px; padding: 30px 25px; box-shadow: 0 20px 40px rgba(255,0,0,0.25);">
-        <h2 style="font-family:'Playfair Display', serif; font-size:2.2rem; margin-bottom:12px;">Înscrie-ți Camionul</h2>
-        <p style="opacity:.9; margin-bottom:14px;">Completează formularul pentru a asigura locul tău în prima ediție TTS 2026.</p>
-        <p style="opacity:.9; margin-bottom:14px;">Apasă butonul pentru a te înscrie. Vei fi redirecționat către email-ul tău pentru a completa formularul.</p>
-        <a href="mailto:trucktuningshow@gmail.com?subject=Înscriere%20TTS%202026&body=Înscriere%20TTS%202026%0A%0ACompletează%20formularul%20următor%3A%0A%0ANume%3A%20%0AEmail%3A%20%0ATelefon%3A%20%0ADescriere%20camion%20(marcă%2C%20model%2C%20an%2C%20tuning)%3A%20%0AEste%20firmă%2Fcompanie%3F%20Da%2FNu%0A%0APoze%3A%20Trimite%20separat%20la%20acest%20email%20(2-3%20imagini%20relevante)" style="background: #c00; color: #fff; border: none; padding: 14px 24px; font-size: 0.95rem; border-radius: 6px; text-decoration: none; display: inline-block;">Înscrie-te acum</a>
-        <p style="font-size:0.9rem; margin-top:10px; opacity:0.75;">Veți primi un email de confirmare în maxim 24h.</p>
+    <div class="container" style="max-width:800px; text-align:center;">
+      <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 18px; padding: 40px; box-shadow: 0 15px 35px rgba(0,0,0,0.4);">
+        <h2 style="font-family:'Playfair Display', serif; font-size:2.4rem; margin-bottom:15px; letter-spacing: 0.5px;">Înscrie-ți Camionul</h2>
+        <p style="opacity:0.7; margin-bottom:20px; font-size: 1rem; line-height: 1.6; color: #eee;">Deții o bijuterie pe 18 roți și vrei să o arăți lumii? Completează formularul și asigură-ți locul la prima ediție TTS 2026. Locurile sunt limitate!</p>
+        <p style="opacity:0.6; margin-bottom:30px; font-size: 0.9rem; color: #ddd;">Apasă butonul de mai jos. Acesta va deschide clientul tău de email cu un șablon predefinit. Te rugăm să completezi toate datele solicitate și să atașezi poze relevante.</p>
+        <a href="mailto:trucktuningshow@gmail.com?subject=Înscriere%20TTS%202026" style="background: #c00; color: #fff; border: none; padding: 16px 32px; font-size: 1rem; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 700; transition: background 0.3s; box-shadow: 0 4px 15px rgba(204,0,0,0.2);">Apasă pentru Înscriere</a>
+        <p style="font-size:0.85rem; margin-top:15px; opacity:0.5; color: #bbb;">După trimitere, echipa noastră va analiza cererea și veți primi o confirmare.</p>
       </div>
     </div>
   </section>
 
  <section id="sponsori">
     <div class="container">
-      <h2 style="font-family:'Playfair Display', serif; font-size:2rem; margin-bottom:14px; text-align:center;"><i class="fas fa-handshake" style="color:#c00; margin-right:10px;"></i>Sponsori</h2>
-      <p style="max-width:760px; margin:0 auto 20px; opacity:0.85;">Partenerii noștri oferă expertiză premium, echipamente speciale și suport media dedicat.</p>
+      <h2 style="font-family:'Playfair Display', serif; font-size:2.2rem; margin-bottom:20px; text-align:center;"><i class="fas fa-handshake" style="color:#c00; margin-right:12px;"></i>Sponsori & Parteneri</h2>
+      <p style="max-width:650px; margin:0 auto 40px; opacity:0.6; text-align:center; font-size: 1rem; line-height: 1.6; color: #eee;">Evenimentul TTS 2026 nu ar fi posibil fără suportul și încrederea partenerilor noștri, lideri în industria de transport, tuning și servicii conexe.</p>
       <div class="sponsor-grid">
-        <div class="sponsor-card">
-          <img src="logo1.png" alt="Sponsor 1">
-          <div style="margin-top:12px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-            <a href="https://www.instagram.com/primariaarad/" target="_blank" class="btn-main" style="padding:8px 12px; font-size:16px; border-color:#f00; color:#fff;"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/primariamunicipiului.arad/?locale=ro_RO" target="_blank" class="btn-main" style="padding:8px 12px; font-size:16px; border-color:#3b5998; color:#fff;"><i class="fab fa-facebook-f"></i></a>
+        
+        <div class="sponsor-card sp-institutional">
+          <img src="logo_primaria.png" alt="Primăria Arad">
+          <div style="margin-top:0px; margin-bottom: 12px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+            <a href="https://www.instagram.com/primariaarad/" target="_blank" style="color:rgba(255,255,255,0.6); transition: 0.3s; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/primariamunicipiului.arad/" target="_blank" style="color:rgba(255,255,255,0.6); transition: 0.3s; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
           </div>
-          <h4 style="margin:10px 0 6px;">Institutional Partner</h4>
-          <p style="opacity:0.8; font-size:0.95rem; margin:0;">Sprijin esențial pentru organizarea evenimentului.</p>
+          <h4>Institutional Partner</h4>
+          <p>Sprijin esențial din partea Primăriei Municipiului Arad.</p>
         </div>
-        <div class="sponsor-card">
-          <img src="logo2.png" alt="Sponsor 2">
-          <div style="margin-top:12px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-            <a href="https://www.instagram.com/sponsor2" target="_blank" class="btn-main" style="padding:8px 12px; font-size:16px; border-color:#f00; color:#fff;"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/sponsor2" target="_blank" class="btn-main" style="padding:8px 12px; font-size:16px; border-color:#3b5998; color:#fff;"><i class="fab fa-facebook-f"></i></a>
+
+        <div class="sponsor-card sp-silver">
+          <img src="logo_silver1.png" alt="Sponsor Argint">
+          <div style="margin-top:0px; margin-bottom: 12px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+            <a href="#" style="color:rgba(255,255,255,0.6); transition: 0.3s; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color:rgba(255,255,255,0.6); transition: 0.3s; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
           </div>
-          <h4 style="margin:10px 0 6px;">Silver Partner</h4>
-          <p style="opacity:0.8; font-size:0.95rem; margin:0;"></p>
+          <h4>Silver Partner</h4>
+          <p>Companii de top care susțin performanța și calitatea.</p>
         </div>
-        <div class="sponsor-card">
-          <img src="logo3.png" alt="Sponsor 3">
-          <div style="margin-top:12px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-            <a href="https://www.instagram.com/sponsor3" target="_blank" class="btn-main" style="padding:8px 12px; font-size:16px; border-color:#f00; color:#fff;"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/sponsor3" target="_blank" class="btn-main" style="padding:8px 12px; font-size:16px; border-color:#3b5998; color:#fff;"><i class="fab fa-facebook-f"></i></a>
+
+        <div class="sponsor-card sp-silver">
+          <img src="logo_silver2.png" alt="Sponsor Argint">
+          <div style="margin-top:0px; margin-bottom: 12px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+            <a href="#" style="color:rgba(255,255,255,0.6); transition: 0.3s; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color:rgba(255,255,255,0.6); transition: 0.3s; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
           </div>
-          <h4 style="margin:10px 0 6px;">Silver Partner</h4>
-          <p style="opacity:0.8; font-size:0.95rem; margin:0;"></p>
+          <h4>Silver Partner</h4>
+          <p>Parteneri logistici și de tuning de specialitate.</p>
         </div>
-        <div class="sponsor-card">
-          <img src="logo4.png" alt="Sponsor 4">
-          <div style="margin-top:12px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-            <a href="https://www.instagram.com/sponsor4" target="_blank" class="btn-main" style="padding:8px 12px; font-size:16px; border-color:#f00; color:#fff;"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/sponsor4" target="_blank" class="btn-main" style="padding:8px 12px; font-size:16px; border-color:#3b5998; color:#fff;"><i class="fab fa-facebook-f"></i></a>
+
+        <div class="sponsor-card sp-bronze">
+          <img src="logo_bronze.png" alt="Sponsor Bronz">
+          <div style="margin-top:0px; margin-bottom: 12px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+            <a href="#" style="color:rgba(255,255,255,0.6); transition: 0.3s; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color:rgba(255,255,255,0.6); transition: 0.3s; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
           </div>
-          <h4 style="margin:10px 0 6px;">Bronze Partner</h4>
-          <p style="opacity:0.8; font-size:0.95rem; margin:0;"></p>
+          <h4>Bronze Partner</h4>
+          <p>Susținători locali ai evenimentului.</p>
         </div>
+
       </div>
     </div>
   </section>
   
   <section id="social">
     <div class="container" style="text-align:center;">
-      <h2 style="font-family:'Playfair Display', serif; font-size:2rem; margin-bottom:12px;">Social</h2>
-      <p style="opacity:.8; margin-bottom:16px;">Urmărește-ne pentru noutăți și anunțuri.</p>
+      <h2 style="font-family:'Playfair Display', serif; font-size:2.2rem; margin-bottom:15px;">Fii la Curent</h2>
+      <p style="opacity:0.6; margin-bottom:20px; font-size: 1rem; color: #eee;">Urmărește paginile noastre oficiale pentru anunțuri, noutăți și momente din culise.</p>
       <div class="social-links">
         <a href="https://www.instagram.com/ttsarad/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
         <a href="https://www.tiktok.com/@arabu_ciprian" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
@@ -202,13 +228,54 @@
     </div>
   </section>
 
-  <footer class="footer"><p style="opacity:.8;">© 2026 TRUCK TUNING SHOW ARAD • EXPO</p></footer>
+  <footer class="footer">
+    <div class="container">
+      <p style="opacity:0.4; font-size: 0.8rem; margin: 0; color: #ccc;">© 2026 Truck Tuning Show Arad • Toate drepturile rezervate.</p>
+    </div>
+  </footer>
 
   <script>
     function hideIntro() { document.getElementById('intro-overlay').style.display='none'; }
-    function updateCountdown(){const t=new Date('July 10, 2026 10:00:00').getTime(),n=new Date().getTime(),d=t-n;if(d<=0){document.getElementById('countdown').textContent='Evenimentul a început!';clearInterval(x);return;}const D=Math.floor(d/86400000),H=Math.floor(d%86400000/3600000),M=Math.floor(d%3600000/60000),S=Math.floor(d%60000/1000);document.getElementById('countdown').textContent=`Mai sunt ${D} zile ${H}h ${M}m ${S}s`;}
-    const x=setInterval(updateCountdown,1000);updateCountdown();
-    window.addEventListener('load',()=>{setTimeout(hideIntro,1400);});
+    function updateCountdown(){
+      const t = new Date('July 10, 2026 10:00:00').getTime(),
+            n = new Date().getTime(),
+            d = t - n;
+      if(d <= 0){
+        document.getElementById('countdown').textContent = 'Evenimentul a început!';
+        clearInterval(x);
+        return;
+      }
+      const D = Math.floor(d / 86400000),
+            H = Math.floor((d % 86400000) / 3600000),
+            M = Math.floor((d % 3600000) / 60000),
+            S = Math.floor((d % 60000) / 1000);
+      document.getElementById('countdown').textContent = `Mai sunt ${D} zile ${H}h ${M}m ${S}s`;
+    }
+    const x = setInterval(updateCountdown, 1000);
+    updateCountdown();
+    window.addEventListener('load', () => { setTimeout(hideIntro, 1200); });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const headerOffset = 70;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+                
+                // Update active link
+                document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+            }
+        });
+    });
   </script>
 </body>
 </html>
