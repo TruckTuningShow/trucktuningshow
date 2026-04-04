@@ -25,7 +25,7 @@
     body { min-width: 320px; }
     
     /* =========================================
-       INTRO MODERNA (PĂSTRATĂ)
+        INTRO MODERNA (PĂSTRATĂ)
     ========================================= */
     #intro-overlay {
         position: fixed; inset: 0; background: #000; z-index: 9999;
@@ -49,7 +49,7 @@
     @keyframes expandLine { to { width: 80%; } }
 
     /* =========================================
-       BARĂ DE NAVIGARE FLOATING (MODERNIZATĂ FĂRĂ ROȘU)
+        BARĂ DE NAVIGARE FLOATING (MODERNIZATĂ FĂRĂ ROȘU)
     ========================================= */
     nav { 
         position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
@@ -77,13 +77,21 @@
     .nav-links a:hover::after, .nav-links a.active::after { width: 60%; }
 
     /* =========================================
-       STILURI CONȚINUT (MODERNIZATE FĂRĂ ROȘU)
+        STILURI CONȚINUT (MODERNIZATE FĂRĂ ROȘU)
     ========================================= */
     section { padding: 80px 20px 60px; min-height: auto; } 
 
     @media (max-width: 768px) { 
-      nav { top: 15px; padding: 8px 15px; width: 95%; }
-      .nav-links { display: none; }
+      nav { 
+        top: 15px; padding: 8px 15px; width: 95%; 
+        justify-content: center; /* Centrăm conținutul pe mobil */
+      }
+      .nav-brand { display: none; } /* Ascundem logo-ul pe mobil ca să aibă loc link-urile */
+      .nav-links { 
+        display: flex; /* ACEASTA ERA PROBLEMA, ERA NONE */
+        gap: 2px; 
+      }
+      .nav-links a { padding: 8px 6px; font-size: 7px; }
       section { padding: 60px 15px 40px; }
       .card-grid { grid-template-columns: 1fr; gap: 15px; }
       .sponsor-grid { grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 15px; }
