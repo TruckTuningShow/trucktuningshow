@@ -1,352 +1,345 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TTS 2026 | Truck Tuning Show Arad</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700;900&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2 Luni Împreună ❤️</title>
     
-    /* DEFINIRE CULORI NOI (MODERNE, NEAPRINSE) */
-    :root {
-      --bg-dark: #000000;
-      --bg-card: #080808;
-      --text-main: #ffffff;
-      --text-muted: rgba(255, 255, 255, 0.7);
-      /* Noua culoare de accent: un gri-albăstrui metalizat, discret */
-      --accent-color: #94a3b8; 
-      --glass: rgba(255, 255, 255, 0.03);
-      --glass-border: rgba(255, 255, 255, 0.08);
-    }
-
-    html, body { margin: 0; padding: 0; background: var(--bg-dark); color: var(--text-main); font-family: 'Inter', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
-    body { min-width: 320px; }
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     
-    /* =========================================
-        INTRO MODERNA (PĂSTRATĂ)
-    ========================================= */
-    #intro-overlay {
-        position: fixed; inset: 0; background: #000; z-index: 9999;
-        display: flex; flex-direction: column; justify-content: center; align-items: center;
-        transition: transform 1.2s cubic-bezier(0.85, 0, 0.15, 1);
-    }
-    #intro-overlay.hidden { transform: translateY(-100%); }
-    .intro-text { 
-        font-family: 'Playfair Display', serif; color: #fff; font-size: clamp(1.5rem, 5vw, 2.5rem);
-        font-weight: 900; letter-spacing: 15px; opacity: 0;
-        animation: revealText 2s ease forwards;
-    }
-    .intro-line {
-        width: 0; height: 1px; background: rgba(255,255,255,0.3);
-        margin: 15px auto 0; animation: expandLine 1.5s 0.5s ease forwards;
-    }
-    @keyframes revealText {
-        0% { letter-spacing: 25px; opacity: 0; filter: blur(10px); }
-        100% { letter-spacing: 8px; opacity: 1; filter: blur(0); }
-    }
-    @keyframes expandLine { to { width: 80%; } }
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ff8fa3;
+            --bg-1: #fff0f3;
+            --bg-2: #ffd6e0;
+            --bg-3: #ffb3c6;
+            --text-dark: #590d22;
+            --text-light: #888;
+        }
 
-    /* =========================================
-        BARĂ DE NAVIGARE FLOATING (MODERNIZATĂ FĂRĂ ROȘU)
-    ========================================= */
-    nav { 
-        position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
-        width: 90%; max-width: 950px; z-index: 1000;
-        background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(20px) saturate(180%);
-        -webkit-backdrop-filter: blur(20px); border: 1px solid var(--glass-border);
-        border-radius: 100px; padding: 10px 30px;
-        display: flex; justify-content: space-between; align-items: center;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-    }
-    .nav-brand { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.3rem; color: #fff; }
-    .nav-links { display: flex; gap: 5px; align-items: center; }
-    .nav-links a { 
-        padding: 10px 18px; font-size: 10px; text-transform: uppercase; font-weight: 700;
-        color: rgba(255,255,255,0.5); text-decoration: none; border-radius: 50px; transition: 0.4s;
-        position: relative;
-    }
-    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.05); }
-    
-    /* Indicator activ subțire în culoarea accent */
-    .nav-links a::after {
-        content: ''; position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%);
-        width: 0; height: 2px; background: var(--accent-color); transition: 0.3s; border-radius: 2px;
-    }
-    .nav-links a:hover::after, .nav-links a.active::after { width: 60%; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
 
-    /* =========================================
-        STILURI CONȚINUT (MODERNIZATE FĂRĂ ROȘU)
-    ========================================= */
-    section { padding: 80px 20px 60px; min-height: auto; } 
+        body {
+            /* Fundal gradient animat */
+            background: linear-gradient(-45deg, var(--bg-1), var(--bg-2), var(--bg-3), var(--bg-1));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            width: 100%;
+        }
 
-    @media (max-width: 768px) { 
-      nav { 
-        top: 15px; padding: 8px 15px; width: 95%; 
-        justify-content: center; /* Centrăm conținutul pe mobil */
-      }
-      .nav-brand { display: none; } /* Ascundem logo-ul pe mobil ca să aibă loc link-urile */
-      .nav-links { 
-        display: flex; /* ACEASTA ERA PROBLEMA, ERA NONE */
-        gap: 2px; 
-      }
-      .nav-links a { padding: 8px 6px; font-size: 7px; }
-      section { padding: 60px 15px 40px; }
-      .card-grid { grid-template-columns: 1fr; gap: 15px; }
-      .sponsor-grid { grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 15px; }
-      .hero-title { font-size: clamp(4rem, 15vw, 7rem); }
-      .timer { padding: 10px 18px; font-size: 0.9rem; }
-    }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-    .container { max-width: 1100px; margin: 0 auto; }
-    #hero .container { text-align: center; }
+        /* Fundal cu Inimi și Stele Plutitoare */
+        #particles {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; pointer-events: none;
+        }
 
-    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(5rem, 18vw, 11rem); line-height: 0.85; margin: 0; letter-spacing: 0.08em; }
-    .hero-sub { font-size: clamp(1.2rem, 2.5vw, 2.3rem); text-transform: uppercase; letter-spacing: 3px; margin: 15px 0 20px; color: rgba(255,255,255,0.9); }
-    .hero-p { font-size: 1.1rem; opacity: 0.7; margin-bottom: 25px; font-weight: 400; }
-    
-    /* TIMER - Border discret, fără roșu strident */
-    .timer { display: inline-block; background: #111; border: 1px solid var(--glass-border); border-radius: 999px; padding: 14px 24px; font-weight: 700; color: #fff; margin-bottom: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; font-variant-numeric: tabular-nums; }
-    .timer:hover { transform: scale(1.03); border-color: var(--accent-color); }
+        /* Ecran de Start */
+        #intro {
+            position: fixed; top:0; left:0; width:100%; height:100%;
+            background: rgba(255, 255, 255, 0.95); z-index: 1000;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 1s ease-in-out;
+            text-align: center;
+            padding: 20px;
+        }
 
-    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; }
-    /* CARDURI - Efect de sticlă, border accent la hover */
-    .card { border: 1px solid var(--glass-border); background: var(--glass); backdrop-filter: blur(10px); padding: 30px; border-radius: 24px; transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; position: relative; overflow: hidden; }
-    .card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.5); border-color: var(--accent-color); }
-    .card h3 { margin-top: 0; font-weight: 700; color: #fff; letter-spacing: 0.5px; font-size: 1.3rem; margin-bottom: 10px; }
-    .card p { opacity: 0.7; line-height: 1.6; font-size: 0.95rem; }
-    .card ul { margin-top: 15px; padding-left: 0; list-style: none; text-align: left; }
-    .card ul li { margin-bottom: 8px; font-size: 0.9rem; opacity: 0.8; display: flex; align-items: start; color: #eee; }
-    /* Săgeată în culoarea accent */
-    .card ul li::before { content: '→'; color: var(--accent-color); margin-right: 10px; font-weight: bold; flex-shrink: 0; }
+        .pulse-heart {
+            font-size: 80px; 
+            animation: heartBeat 1.2s infinite; 
+            cursor: pointer;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 77, 109, 0.5);
+        }
 
-    #locatie, #inscriere { background: #050505; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); }
-    
-    /* FORMULAR ÎNSCRIERE - Efect de sticlă */
-    .signup-box { background: var(--glass); border: 1px solid var(--glass-border); backdrop-filter: blur(10px); border-radius: 24px; padding: 40px; box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
+        /* Secțiuni și Carduri */
+        section {
+            min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 50px 20px;
+            position: relative;
+            width: 100%;
+        }
 
-    .sponsor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 25px; }
-    .sponsor-card { border: 1px solid var(--glass-border); background: var(--glass); border-radius: 16px; padding: 25px; text-align: center; cursor: pointer; transition: all 0.3s ease; min-height:300px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-    .sponsor-card img { width: 130px; height: 130px; object-fit: contain; filter: grayscale(100%); opacity: 0.4; transition: all 0.3s; border-radius: 50%; background: rgba(255,255,255,0.05); padding: 15px; display: block; margin: 0 auto 15px; }
-    .sponsor-card:hover img { transform: scale(1.05); filter: grayscale(0); opacity: 1; background: rgba(255,255,255,0.08); }
+        .glass-box {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 25px;
+            padding: 30px 20px;
+            width: 100%; max-width: 320px;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.15);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transform: translateY(40px); opacity: 0;
+            transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
 
-    /* Efecte hover colorate pe grade la sponsori - PĂSTRATE */
-    .sp-institutional:hover { border-color: #ffd700; box-shadow: 0 10px 30px rgba(255,215,0,0.15); }
-    .sp-silver:hover { border-color: #c0c0c0; box-shadow: 0 10px 30px rgba(192,192,192,0.15); }
-    .sp-bronze:hover { border-color: #cd7f32; box-shadow: 0 10px 30px rgba(205,127,50,0.15); }
-    
-    .sponsor-card h4 { font-size: 1rem; font-weight: 700; margin: 0 0 5px; color: #fff; }
-    .sponsor-card p { opacity: 0.6; font-size: 0.85rem; margin: 0; line-height: 1.4; color: #eee; }
+        .glass-box.visible { transform: translateY(0); opacity: 1; }
 
-    /* BUTOANE MODERNE (STIL LUXURY) - Negru cu border alb, alb la hover */
-    .btn-lux { background: transparent; color: #fff; border: 1px solid #fff; padding: 14px 28px; border-radius: 100px; text-decoration: none; font-weight: 700; display: inline-block; font-size: 0.9rem; transition: 0.3s; box-shadow: 0 4px 15px rgba(255,255,255,0.1); text-transform: uppercase; letter-spacing: 1px; }
-    .btn-lux:hover { background: #fff; color: #000; box-shadow: 0 6px 20px rgba(255,255,255,0.2); transform: translateY(-2px); }
+        /* Titluri */
+        h1 { font-family: 'Dancing Script', cursive; font-size: 2.6rem; color: var(--primary); margin-bottom: 10px; line-height: 1.2; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); }
+        h2 { font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--primary); margin-bottom: 15px; }
+        p { font-size: 0.95rem; line-height: 1.6; color: var(--text-dark); margin-bottom: 15px; }
 
-    .footer { padding: 15px 20px; text-align: center; background: #000; border-top: 1px solid var(--glass-border); }
-    .social-links { display: flex; justify-content: center; gap: 15px; margin-top: 10px; }
-    .social-links a { color: rgba(255,255,255,0.4); font-size: 1.5rem; transition: 0.3s; }
-    
-    /* Social media hover în culoarea accent discretă */
-    .social-links a:hover { color: var(--accent-color); transform: translateY(-3px); }
-  </style>
+        /* Zonă Foto Clară + Efect de Plutire */
+        .photo-frame {
+            width: 100%;
+            height: 300px;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            margin: 20px 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transform: rotate(-3deg);
+            animation: floatBox 5s ease-in-out infinite; /* Efect nou */
+        }
+
+        @keyframes floatBox {
+            0% { transform: translateY(0px) rotate(-3deg); }
+            50% { transform: translateY(-12px) rotate(-1deg); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
+            100% { transform: translateY(0px) rotate(-3deg); }
+        }
+
+        .photo-frame img {
+            max-width: 100%;
+            max-height: 240px;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        /* Cronometru Mai Mic */
+        .time-counter {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 12px 20px; border-radius: 20px;
+            font-size: 0.95rem; font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: 15px;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.3);
+        }
+
+        /* Listă Motive Aliniată */
+        .reasons-container { text-align: left; width: 100%; margin-top: 10px; }
+        .reason-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px; padding: 15px;
+            margin-bottom: 12px; display: flex; align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+            font-size: 0.85rem;
+            transition: transform 0.3s ease;
+        }
+        .reason-item:hover { transform: scale(1.02); }
+
+        /* Buton Final */
+        .magic-btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white; border: none; padding: 16px 40px;
+            border-radius: 50px; font-size: 1.1rem; font-weight: bold;
+            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
+            cursor: pointer; margin-top: 15px;
+            transition: all 0.3s;
+        }
+        .magic-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(255, 77, 109, 0.5); }
+        .magic-btn:active { transform: scale(0.95); }
+
+        /* Animații */
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.15); }
+        }
+    </style>
 </head>
 <body>
 
-  <div id="intro-overlay">
-    <div class="intro-content">
-        <div class="intro-text">TTS ARAD 2026</div>
-        <div class="intro-line"></div>
-    </div>
-  </div>
+    <canvas id="particles"></canvas>
 
-  <nav>
-    <div class="nav-brand">TTS 2026</div>
-    <div class="nav-links">
-      <a href="#hero" class="active">Detalii</a>
-      <a href="#program">Program</a>
-      <a href="#locatie">Locație</a>
-      <a href="#inscriere">Participă</a>
-      <a href="#sponsori">Sponsori</a>
-      <a href="#social">Social</a>
+    <div id="intro" onclick="unlock()">
+        <div class="pulse-heart">❤️</div>
+        <p style="color: var(--text-light); font-family: sans-serif; font-size: 0.9rem; letter-spacing: 1px;">Apasă inima, iubito</p>
     </div>
-  </nav>
 
-  <section id="hero" style="padding-top: 180px;">
-    <div class="container">
-      <p style="text-transform: uppercase; letter-spacing: 5px; opacity:0.5; font-size: 12px; margin-bottom: 10px;">10, 11, 12 iulie • Arad • Expo</p>
-      <h1 class="hero-title">TTS</h1>
-      <h2 class="hero-sub">Truck Tuning Show</h2>
-      <p class="hero-p">Prima ediție a celui mai așteptat eveniment de tuning pentru camioane din vestul țării.</p>
-      <div class="timer" id="countdown">Calculăm timpul...</div>
-    </div>
-  </section>
-
-  <section id="program">
-    <div class="container">
-      <h2 style="font-family:'Playfair Display', serif; font-size:2.2rem; margin-bottom:25px; text-align:center;"><i class="fas fa-calendar-alt" style="color:var(--accent-color); margin-right:12px;"></i>Program Festival</h2>
-      <p style="max-width:600px; margin: 0 auto 40px; text-align: center; opacity: 0.6; font-size: 1rem; color: #eee;">Trei zile intense pline de pasiune, putere și inovație în lumea camioanelor modificate.</p>
-      <div class="card-grid">
-        <article class="card">
-          <h3>10 Iulie - Vineri</h3>
-          <p>Ziua de deschidere și primire.</p>
-          <ul>
-            <li>15:00 – Intrarea în Parcarea Expo, Pregătirea Camioanelor și Parcarea lor.</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>11 Iulie - Sâmbătă</h3>
-          <p>Evenimentul principal pe tot parcursul zilei.</p>
-          <ul>
-            <li>15:00 – Muzică, atmosferă și interacțiune cu publicul.</li>
-            <li>22:00 – Show de Lumini în Întuneric - un spectacol vizual unic.</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>12 Iulie - Duminică</h3>
-          <p>Ziua finală și ceremoniile de premiere.</p>
-          <ul>
-            <li>12:30 – Jurizarea Camioanelor de către experți.</li>
-            <li>13:30 – Premierea Camioanelor la diverse categorii.</li>
-            <li>16:00 – Terminarea Festivalului și Plecarea Camioanelor.</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="locatie">
-    <div class="container">
-      <h2 style="font-family:'Playfair Display', serif; font-size:2.2rem; margin-bottom:20px; text-align:center;"><i class="fas fa-map-marker-alt" style="color:var(--accent-color); margin-right:12px;"></i>Locație Festival</h2>
-      <p style="opacity:0.7; max-width:700px; margin:0 auto 20px; font-size:1rem; text-align:center; line-height: 1.6; color: #eee;">Evenimentul se desfășoară în incinta Expo Arad, un spațiu generos și modern, perfect adaptat pentru giganții șoselelor. Locația este strategic aleasă, fiind ușor accesibilă direct de pe centura orașului Arad.</p>
-      <p style="opacity:0.9; max-width:700px; margin:0 auto 25px; font-weight:600; text-align:center;">Expo Arad • Calea Aurel Vlaicu 300, Arad</p>
-      <div style="text-align:center;">
-        <a href="https://goo.gl/maps/xyz" target="_blank" class="btn-lux">Navighează cu Google Maps <i class="fas fa-external-link-alt" style="margin-left: 8px; font-size: 0.8rem;"></i></a>
-      </div>
-    </div>
-  </section>
-
-  <section id="inscriere">
-    <div class="container" style="max-width:800px; text-align:center;">
-      <div class="signup-box">
-        <h2 style="font-family:'Playfair Display', serif; font-size:2.4rem; margin-bottom:15px; letter-spacing: 0.5px;">Înscrie-ți Camionul</h2>
-        <p style="opacity:0.7; margin-bottom:20px; font-size: 1rem; line-height: 1.6; color: #eee;">Deții o bijuterie pe 18 roți și vrei să o arăți lumii? Completează formularul și asigură-ți locul la prima ediție TTS 2026. Locurile sunt limitate!</p>
-        <p style="opacity:0.6; margin-bottom:30px; font-size: 0.9rem; color: #ddd;">Apasă butonul de mai jos. Acesta va deschide clientul tău de email cu un șablon predefinit. Te rugăm să completezi toate datele solicitate și să atașezi poze relevante.</p>
-        <a href="mailto:trucktuningshow@gmail.com?subject=Înscriere%20TTS%202026" class="btn-lux">Apasă pentru Înscriere</a>
-        <p style="font-size:0.85rem; margin-top:15px; opacity:0.5; color: #bbb;">După trimitere, echipa noastră va analiza cererea și veți primi o confirmare.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="sponsori">
-    <div class="container">
-      <h2 style="font-family:'Playfair Display', serif; font-size:2.2rem; margin-bottom:20px; text-align:center;"><i class="fas fa-handshake" style="color:var(--accent-color); margin-right:12px;"></i>Sponsori & Parteneri</h2>
-      <p style="max-width:650px; margin:0 auto 40px; opacity:0.6; text-align:center; font-size: 1rem; line-height: 1.6; color: #eee;">Evenimentul TTS 2026 nu ar fi posibil fără suportul și încrederea partenerilor noștri, lideri în industria de transport, tuning și servicii conexe.</p>
-      <div class="sponsor-grid">
-        <div class="sponsor-card sp-institutional">
-          <img src="logo_primaria.png" alt="Primăria Arad">
-          <div style="margin-top:0px; margin-bottom: 12px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-            <a href="https://www.instagram.com/primariaarad/" target="_blank" style="color:rgba(255,255,255,0.6); transition: 0.3s; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/primariamunicipiului.arad/" target="_blank" style="color:rgba(255,255,255,0.6); transition: 0.3s; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
-          </div>
-          <h4>Institutional Partner</h4>
-          <p>Sprijin esențial din partea Primăriei Municipiului Arad.</p>
+    <section>
+        <div class="glass-box">
+            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; color: var(--text-light); font-weight: bold;">15 Aprilie 2026</p>
+            <h1>2 Luni Împreună</h1>
+            <p>Fiecare secundă alături de tine este o binecuvântare. Îți mulțumesc că ești a mea.</p>
+            <div class="time-counter" id="timer">...</div>
         </div>
-        <div class="sponsor-card sp-silver">
-          <img src="logo_silver1.png" alt="Sponsor Argint">
-          <div style="margin-top:0px; margin-bottom: 12px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-            <a href="#" style="color:rgba(255,255,255,0.6); transition: 0.3s; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
-            <a href="#" style="color:rgba(255,255,255,0.6); transition: 0.3s; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
-          </div>
-          <h4>Silver Partner</h4>
-          <p>Companii de top care susțin performanța și calitatea.</p>
+    </section>
+
+    <section>
+        <div class="glass-box">
+            <h2>Amintirea Noastră</h2>
+            <div class="photo-frame">
+                <img src="https://i.postimg.cc/VJJj0XyR/teiubesc.webp" alt="Te iubesc">
+                <p style="font-family: 'Dancing Script', cursive; margin-top: 10px; font-size: 1.3rem; margin-bottom: 0; color: var(--primary);">Tu și Eu ✨</p>
+            </div>
+            <p style="font-style: italic; font-size: 0.85rem; margin-bottom: 0; color: #666;">"Ești cea mai frumoasă poveste a mea."</p>
         </div>
-        <div class="sponsor-card sp-silver">
-          <img src="logo_silver2.png" alt="Sponsor Argint">
-          <div style="margin-top:0px; margin-bottom: 12px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-            <a href="#" style="color:rgba(255,255,255,0.6); transition: 0.3s; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
-            <a href="#" style="color:rgba(255,255,255,0.6); transition: 0.3s; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
-          </div>
-          <h4>Silver Partner</h4>
-          <p>Parteneri logistici și de tuning de specialitate.</p>
+    </section>
+
+    <section>
+        <div class="glass-box">
+            <h2>De ce te iubesc?</h2>
+            <div class="reasons-container">
+                <div class="reason-item animate__animated animate__fadeInLeft">
+                    <span style="font-size: 1.4rem; margin-right: 12px;">🌟</span>
+                    <span>Pentru zâmbetul tău care îmi luminează ziua.</span>
+                </div>
+                <div class="reason-item animate__animated animate__fadeInRight">
+                    <span style="font-size: 1.4rem; margin-right: 12px;">🧸</span>
+                    <span>Pentru liniștea pe care mi-o oferi în brațele tale.</span>
+                </div>
+                <div class="reason-item animate__animated animate__fadeInLeft">
+                    <span style="font-size: 1.4rem; margin-right: 12px;">🦋</span>
+                    <span>Pentru că mă faci să fiu o versiune mai bună.</span>
+                </div>
+            </div>
         </div>
-        <div class="sponsor-card sp-bronze">
-          <img src="logo_bronze.png" alt="Sponsor Bronz">
-          <div style="margin-top:0px; margin-bottom: 12px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-            <a href="#" style="color:rgba(255,255,255,0.6); transition: 0.3s; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
-            <a href="#" style="color:rgba(255,255,255,0.6); transition: 0.3s; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
-          </div>
-          <h4>Bronze Partner</h4>
-          <p>Susținători locali ai evenimentului.</p>
+    </section>
+
+    <section>
+        <div class="glass-box">
+            <h1>Te iubesc enorm!</h1>
+            <p>Abia aștept să scriem următoarele capitole împreună.</p>
+            <button class="magic-btn" onclick="megaCelebration()">Apasă aici ✨</button>
         </div>
-      </div>
-    </div>
-  </section>
-  
-  <section id="social">
-    <div class="container" style="text-align:center;">
-      <h2 style="font-family:'Playfair Display', serif; font-size:2.2rem; margin-bottom:15px;">Fii la Curent</h2>
-      <p style="opacity:0.6; margin-bottom:20px; font-size: 1rem; color: #eee;">Urmărește paginile noastre oficiale pentru anunțuri, noutăți și momente din culise.</p>
-      <div class="social-links">
-        <a href="https://www.instagram.com/ttsarad/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.tiktok.com/@arabu_ciprian" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-        <a href="https://www.facebook.com/profile.php?id=61576446466233" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="footer">
-    <div class="container">
-      <p style="opacity:0.4; font-size: 0.8rem; margin: 0; color: #ccc;">© 2026 Truck Tuning Show Arad • Toate drepturile rezervate.</p>
-    </div>
-  </footer>
+    <script>
+        // Data de început a fost modificată: 15 Februarie 2026 
+        // (Pentru ca 2 luni să pice exact pe 15 Aprilie)
+        const startDate = new Date("2026-02-15T00:00:00");
 
-  <script>
-    // Logică pentru Intro (Păstrată)
-    window.addEventListener('load', () => { 
-        setTimeout(() => {
-            document.getElementById('intro-overlay').classList.add('hidden');
-        }, 1800); 
-    });
+        function unlock() {
+            document.getElementById('intro').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('intro').style.display = 'none';
+                revealOnScroll(); 
+            }, 1000);
+            megaCelebration();
+        }
 
-    // Timer original (Păstrat)
-    function updateCountdown(){
-      const t = new Date('July 10, 2026 10:00:00').getTime(),
-            n = new Date().getTime(),
-            d = t - n;
-      if(d <= 0){
-        document.getElementById('countdown').textContent = 'Evenimentul a început!';
-        return;
-      }
-      const D = Math.floor(d / 86400000),
-            H = Math.floor((d % 86400000) / 3600000),
-            M = Math.floor((d % 3600000) / 60000),
-            S = Math.floor((d % 60000) / 1000);
-      document.getElementById('countdown').textContent = `Mai sunt ${D} zile ${H}h ${M}m ${S}s`;
-    }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+        // Cronometru precis
+        function updateTimer() {
+            const now = new Date();
+            const diff = now - startDate;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const mins = Math.floor((diff / 1000 / 60) % 60);
+            const secs = Math.floor((diff / 1000) % 60);
+            
+            const fH = hours < 10 ? '0'+hours : hours;
+            const fM = mins < 10 ? '0'+mins : mins;
+            const fS = secs < 10 ? '0'+secs : secs;
 
-    // Scroll & Nav Link Active (Păstrat)
-    window.addEventListener('scroll', () => {
-        let current = "";
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll(".nav-links a");
+            document.getElementById("timer").innerHTML = `${days}z : ${fH}h : ${fM}m : ${fS}s`;
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
 
-        sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - 150) {
-                current = section.getAttribute("id");
+        // Animații la Scroll
+        function revealOnScroll() {
+            const boxes = document.querySelectorAll('.glass-box');
+            boxes.forEach((box, index) => {
+                const boxTop = box.getBoundingClientRect().top;
+                if(boxTop < window.innerHeight * 0.85) {
+                    // Adaugă un mic delay în funcție de ordine
+                    setTimeout(() => {
+                        box.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+
+        // Confetti
+        function megaCelebration() {
+            const duration = 3000;
+            const animationEnd = Date.now() + duration;
+            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
             }
-        });
 
-        navLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href").includes(current)) {
-                link.classList.add("active");
+            const interval = setInterval(function() {
+                const timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                const particleCount = 50 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        }
+
+        // Fundal Inimi & Stele
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        
+        function setCanvasSize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        setCanvasSize();
+        window.addEventListener('resize', setCanvasSize);
+
+        let pArray = [];
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 15 + 10;
+                this.speed = Math.random() * 0.6 + 0.2;
+                this.char = Math.random() > 0.3 ? '❤️' : '✨';
+                this.angle = Math.random() * 360;
+                this.spin = (Math.random() - 0.5) * 2;
             }
-        });
-    });
-  </script>
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle * Math.PI / 180);
+                ctx.globalAlpha = 0.4; // Ușor transparente
+                ctx.font = `${this.size}px serif`;
+                ctx.fillText(this.char, 0, 0);
+                ctx.restore();
+            }
+            update() {
+                this.y -= this.speed;
+                this.angle += this.spin; // Adaugă rotație naturală
+                if (this.y < -30) {
+                    this.y = canvas.height + 30;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+        }
+        for(let i=0; i<18; i++) pArray.push(new Particle());
+        
+        function animate() {
+            ctx.clearRect(0,0,canvas.width, canvas.height);
+            pArray.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
 </body>
 </html>
