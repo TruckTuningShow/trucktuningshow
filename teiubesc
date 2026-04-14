@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2 Luni Împreună ❤️</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ff8fa3;
+            --bg-1: #fff0f3;
+            --bg-2: #ffd6e0;
+            --bg-3: #ffb3c6;
+            --text-dark: #590d22;
+            --text-light: #888;
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+
+        body {
+            /* Fundal gradient animat */
+            background: linear-gradient(-45deg, var(--bg-1), var(--bg-2), var(--bg-3), var(--bg-1));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Fundal cu Inimi și Stele Plutitoare */
+        #particles {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; pointer-events: none;
+        }
+
+        /* Ecran de Start */
+        #intro {
+            position: fixed; top:0; left:0; width:100%; height:100%;
+            background: rgba(255, 255, 255, 0.95); z-index: 1000;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 1s ease-in-out;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .pulse-heart {
+            font-size: 80px; 
+            animation: heartBeat 1.2s infinite; 
+            cursor: pointer;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 77, 109, 0.5);
+        }
+
+        /* Secțiuni și Carduri */
+        section {
+            min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 50px 20px;
+            position: relative;
+            width: 100%;
+        }
+
+        .glass-box {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 25px;
+            padding: 30px 20px;
+            width: 100%; max-width: 320px;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.15);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transform: translateY(40px); opacity: 0;
+            transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .glass-box.visible { transform: translateY(0); opacity: 1; }
+
+        /* Titluri */
+        h1 { font-family: 'Dancing Script', cursive; font-size: 2.6rem; color: var(--primary); margin-bottom: 10px; line-height: 1.2; text-shadow: 1px 1px 2px rgba(0,0,0,0.05); }
+        h2 { font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--primary); margin-bottom: 15px; }
+        p { font-size: 0.95rem; line-height: 1.6; color: var(--text-dark); margin-bottom: 15px; }
+
+        /* Zonă Foto Clară + Efect de Plutire */
+        .photo-frame {
+            width: 100%;
+            height: 300px;
+            background: white;
+            padding: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            margin: 20px 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transform: rotate(-3deg);
+            animation: floatBox 5s ease-in-out infinite; /* Efect nou */
+        }
+
+        @keyframes floatBox {
+            0% { transform: translateY(0px) rotate(-3deg); }
+            50% { transform: translateY(-12px) rotate(-1deg); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
+            100% { transform: translateY(0px) rotate(-3deg); }
+        }
+
+        .photo-frame img {
+            max-width: 100%;
+            max-height: 240px;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        /* Cronometru Mai Mic */
+        .time-counter {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 12px 20px; border-radius: 20px;
+            font-size: 0.95rem; font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: 15px;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.3);
+        }
+
+        /* Listă Motive Aliniată */
+        .reasons-container { text-align: left; width: 100%; margin-top: 10px; }
+        .reason-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px; padding: 15px;
+            margin-bottom: 12px; display: flex; align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+            font-size: 0.85rem;
+            transition: transform 0.3s ease;
+        }
+        .reason-item:hover { transform: scale(1.02); }
+
+        /* Buton Final */
+        .magic-btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white; border: none; padding: 16px 40px;
+            border-radius: 50px; font-size: 1.1rem; font-weight: bold;
+            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
+            cursor: pointer; margin-top: 15px;
+            transition: all 0.3s;
+        }
+        .magic-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(255, 77, 109, 0.5); }
+        .magic-btn:active { transform: scale(0.95); }
+
+        /* Animații */
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.15); }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="particles"></canvas>
+
+    <div id="intro" onclick="unlock()">
+        <div class="pulse-heart">❤️</div>
+        <p style="color: var(--text-light); font-family: sans-serif; font-size: 0.9rem; letter-spacing: 1px;">Apasă inima, iubito</p>
+    </div>
+
+    <section>
+        <div class="glass-box">
+            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; color: var(--text-light); font-weight: bold;">15 Aprilie 2026</p>
+            <h1>2 Luni Împreună</h1>
+            <p>Fiecare secundă alături de tine este o binecuvântare. Îți mulțumesc că ești a mea.</p>
+            <div class="time-counter" id="timer">...</div>
+        </div>
+    </section>
+
+    <section>
+        <div class="glass-box">
+            <h2>Amintirea Noastră</h2>
+            <div class="photo-frame">
+                <img src="https://i.postimg.cc/VJJj0XyR/teiubesc.webp" alt="Te iubesc">
+                <p style="font-family: 'Dancing Script', cursive; margin-top: 10px; font-size: 1.3rem; margin-bottom: 0; color: var(--primary);">Tu și Eu ✨</p>
+            </div>
+            <p style="font-style: italic; font-size: 0.85rem; margin-bottom: 0; color: #666;">"Ești cea mai frumoasă poveste a mea."</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="glass-box">
+            <h2>De ce te iubesc?</h2>
+            <div class="reasons-container">
+                <div class="reason-item animate__animated animate__fadeInLeft">
+                    <span style="font-size: 1.4rem; margin-right: 12px;">🌟</span>
+                    <span>Pentru zâmbetul tău care îmi luminează ziua.</span>
+                </div>
+                <div class="reason-item animate__animated animate__fadeInRight">
+                    <span style="font-size: 1.4rem; margin-right: 12px;">🧸</span>
+                    <span>Pentru liniștea pe care mi-o oferi în brațele tale.</span>
+                </div>
+                <div class="reason-item animate__animated animate__fadeInLeft">
+                    <span style="font-size: 1.4rem; margin-right: 12px;">🦋</span>
+                    <span>Pentru că mă faci să fiu o versiune mai bună.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="glass-box">
+            <h1>Te iubesc enorm!</h1>
+            <p>Abia aștept să scriem următoarele capitole împreună.</p>
+            <button class="magic-btn" onclick="megaCelebration()">Apasă aici ✨</button>
+        </div>
+    </section>
+
+    <script>
+        // Data de început a fost modificată: 15 Februarie 2026 
+        // (Pentru ca 2 luni să pice exact pe 15 Aprilie)
+        const startDate = new Date("2026-02-15T00:00:00");
+
+        function unlock() {
+            document.getElementById('intro').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('intro').style.display = 'none';
+                revealOnScroll(); 
+            }, 1000);
+            megaCelebration();
+        }
+
+        // Cronometru precis
+        function updateTimer() {
+            const now = new Date();
+            const diff = now - startDate;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const mins = Math.floor((diff / 1000 / 60) % 60);
+            const secs = Math.floor((diff / 1000) % 60);
+            
+            const fH = hours < 10 ? '0'+hours : hours;
+            const fM = mins < 10 ? '0'+mins : mins;
+            const fS = secs < 10 ? '0'+secs : secs;
+
+            document.getElementById("timer").innerHTML = `${days}z : ${fH}h : ${fM}m : ${fS}s`;
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // Animații la Scroll
+        function revealOnScroll() {
+            const boxes = document.querySelectorAll('.glass-box');
+            boxes.forEach((box, index) => {
+                const boxTop = box.getBoundingClientRect().top;
+                if(boxTop < window.innerHeight * 0.85) {
+                    // Adaugă un mic delay în funcție de ordine
+                    setTimeout(() => {
+                        box.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+
+        // Confetti
+        function megaCelebration() {
+            const duration = 3000;
+            const animationEnd = Date.now() + duration;
+            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            const interval = setInterval(function() {
+                const timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                const particleCount = 50 * (timeLeft / duration);
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        }
+
+        // Fundal Inimi & Stele
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        
+        function setCanvasSize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        setCanvasSize();
+        window.addEventListener('resize', setCanvasSize);
+
+        let pArray = [];
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 15 + 10;
+                this.speed = Math.random() * 0.6 + 0.2;
+                this.char = Math.random() > 0.3 ? '❤️' : '✨';
+                this.angle = Math.random() * 360;
+                this.spin = (Math.random() - 0.5) * 2;
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle * Math.PI / 180);
+                ctx.globalAlpha = 0.4; // Ușor transparente
+                ctx.font = `${this.size}px serif`;
+                ctx.fillText(this.char, 0, 0);
+                ctx.restore();
+            }
+            update() {
+                this.y -= this.speed;
+                this.angle += this.spin; // Adaugă rotație naturală
+                if (this.y < -30) {
+                    this.y = canvas.height + 30;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+        }
+        for(let i=0; i<18; i++) pArray.push(new Particle());
+        
+        function animate() {
+            ctx.clearRect(0,0,canvas.width, canvas.height);
+            pArray.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
